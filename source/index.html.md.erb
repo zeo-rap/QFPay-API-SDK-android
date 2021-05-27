@@ -1,0 +1,334 @@
+---
+title: API Reference
+
+language_tabs: # must be one of https://git.io/vQNgJ
+  - plaintext: Text
+  - java: Java
+
+toc_footers:
+  - <a href="https://android-sdk.qfapi.com/files/qfpay_haojin_api_2.2.0.jar" download>Download Android SDK</a>
+  - <a href='https://www.qfpay.global/'>QFPay Global Website</a>
+  - <a href='https://sdk.qfapi.com/'>QFPay Open API Doc</a>
+  - <a href='https://www.qfpay.global/shopify-checkout'>Shopify Checkout Gateway</a>
+  - <a href='https://checkout-sdk.qfapi.com/'>QFPay Online Checkout</a>
+
+
+includes:
+- test-images.md.erb
+
+search: true
+---
+ 
+
+
+# Introduction
+
+HaoJin is a mobile phone software that provides aggregate collection services for merchants. This document describes the interface calls that HaoJin is open to, and third-party applications can implements the collection function through these interfaces.
+HaoJin supports below third-party functions:
+
+<br>
+1. Collection, Refund, Query Multiple Transaction Records, Query Transaction Details.
+<br>
+2. View Transaction Summary, Query Transaction Channel Configuration.
+<br>
+3. Sale/Void/Query/Adjust Endpoints for card.
+
+<a href="https://android-sdk.qfapi.com/images/architecture__diagram.png" target="_blank"> ![Introduction](/images/architecture__diagram.png)</a>
+
+
+
+
+# How to use
+
+## Add Permissions
+
+Add the following code to the AndroidManifest.xml file.
+Note: In order to ensure that you can get permission, please install the haojin
+application first.
+
+<a href="https://android-sdk.qfapi.com/images/add__permission.png" target="_blank"> ![Add Permissions](/images/add__permission.png)</a>
+
+## Add Jar Package Dependency
+
+Integrated the qfpay_haojin_api_xxx.jar file in the third party application.
+
+<a href="https://android-sdk.qfapi.com/images/package__dependency.png" target="_blank"> ![Add Jar Package Dependency](/images/package__dependency.png)</a>
+
+## Config Target Application Id
+
+<a href="https://android-sdk.qfapi.com/images/config__appid.png" target="_blank"> ![Config Target Application Id](/images/config__appid.png)</a>
+
+## Add Proguard Rule
+
+Add follow code to the proguard-rules.pro file.
+
+<a href="https://android-sdk.qfapi.com/images/proguard__rule.png" target="_blank"> ![Add Proguard Rule](/images/proguard__rule.png)</a>
+
+
+
+#Third-party Interface Invoke Sample
+
+## Collection
+
+Calling a collection request:
+
+<a href="https://android-sdk.qfapi.com/images/invoke__collection.png" target="_blank"> ![Collection](/images/invoke__collection.png)</a>
+
+
+## Refund 
+
+Calling a refund request:
+
+<a href="https://android-sdk.qfapi.com/images/invoke__refund.png" target="_blank"> ![Refund](/images/invoke__refund.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__refund.png" target="_blank"> ![Refund](/images/parse__refund.png)</a>
+
+
+## Query Multiple Transaction
+
+Calling a query request:
+
+<a href="https://android-sdk.qfapi.com/images/multiple__query.png" target="_blank"> ![Query Multiple Transaction](/images/multiple__query.png)</a>
+
+**Notes**
+<br>
+1. Check the supported channels.<br>
+2. Only support querying of two transaction types (payment, refund)<br>
+3. Querying by time period has higher priority than querying by month.<br>
+4. The time format is "yyyy-MM-dd HH:mm:ss"<br>
+5. The month format is "yyyyMM"<br>
+6. Split page number starts from one.<br>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__multiple__query.png" target="_blank"> ![Query Multiple Transaction](/images/parse__multiple__query.png)</a>
+
+
+## Query Transaction Details
+
+Calling a query request:
+
+<a href="https://android-sdk.qfapi.com/images/query__details.png" target="_blank"> ![Query Transaction Details](/images/query__details.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__query__details.png" target="_blank"> ![Query Transaction Details](/images/parse__query__details.png)</a>
+
+
+## View Transaction Summary
+
+Calling a view transaction summary request:
+
+<a href="https://android-sdk.qfapi.com/images/view__summary.png" target="_blank"> ![View Transaction Summary](/images/view__summary.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__view__summary.png" target="_blank"> ![View Transaction Summary](/images/parse__view__summary.png)</a>
+
+
+## Query Transaction Channel Configuration(Deprecated)
+
+This interface has been marked as deprecated and can be replaced with the GetUserConfig interface. See [Query User Configuration Information](#query-user-configuration-information) for details. <br>
+Calling a Query transaction channel configuration request:
+
+<a href="https://android-sdk.qfapi.com/images/query__channel__config.png" target="_blank"> ![Query Transaction Channel Configuration(Deprecated)](/images/query__channel__config.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__query__channel__config.png" target="_blank"> ![Query Transaction Channel Configuration(Deprecated)](/images/parse__query__channel__config.png)</a>
+
+## Query User Configuration Information
+
+Call a query user configuration information request:
+
+<a href="https://android-sdk.qfapi.com/images/quey__user__info.png" target="_blank"> ![Query User Configuration Information](/images/quey__user__info.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__query__user__info.png" target="_blank"> ![Query User Configuration Information](/images/parse__query__user__info.png)</a>
+
+
+## Pre-authorization Transaction Deduction
+
+Call a pre-authorization transaction deduction request:
+
+<a href="https://android-sdk.qfapi.com/images/pre-aut__deduct.png" target="_blank"> ![Pre-authorization Transaction Deduction](/images/pre-aut__deduct.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__pre-aut__deduct.png" target="_blank"> ![Pre-authorization Transaction Deduction](/images/parse__pre-aut__deduct.png)</a>
+
+
+## Pre-authorization Transaction Cancel
+
+Call pre-authorization transaction cancel request:
+
+<a href="https://android-sdk.qfapi.com/images/pre-aut__cancel.png" target="_blank"> ![Pre-authorization Transaction Cancel](/images/pre-aut__cancel.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__pre-aut__cancel.png" target="_blank"> ![Pre-authorization Transaction Cancel](/images/parse__pre-aut__cancel.png)</a>
+
+
+## Pre-authorization Transaction List
+
+Call pre-authorization transaction list request:
+
+<a href="https://android-sdk.qfapi.com/images/pre-aut__list.png" target="_blank"> ![Pre-authorization Transaction List](/images/pre-aut__list.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__pre-aut__list.png" target="_blank"> ![Pre-authorization Transaction List](/images/parse__pre-aut__list.png)</a>
+
+
+## Pre-authorization Transaction Detail
+
+Call pre-authorization transaction detail request:
+
+<a href="https://android-sdk.qfapi.com/images/pre-aut__detail.png" target="_blank"> ![Pre-authorization Transaction Detail](/images/pre-aut__detail.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__pre-aut__detail.png" target="_blank"> ![Pre-authorization Transaction Detail](/images/parse__pre-aut__detail.png)</a>
+
+
+## Card Refund
+
+Calling a refund request:
+
+<a href="https://android-sdk.qfapi.com/images/card__refund.png" target="_blank"> ![Card Refund](/images/card__refund.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__card__refund.png" target="_blank"> ![Card Refund](/images/parse__card__refund.png)</a>
+
+
+## Query Multiple Card Transactions
+
+Calling a query request:
+
+<a href="https://android-sdk.qfapi.com/images/multiple__card__query.png" target="_blank"> ![Query Multiple Card Transactions](/images/multiple__card__query.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__multiple__card__query.png" target="_blank"> ![Query Multiple Card Transactions](/images/parse__multiple__card__query.png)</a>
+
+
+## Query Card Transaction Details
+
+Calling a query request:
+
+<a href="https://android-sdk.qfapi.com/images/query__card__details.png" target="_blank"> ![Query Card Transaction Details](/images/query__card__details.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__query__card__details.png" target="_blank"> ![Query Card Transaction Details](/images/parse__query__card__details.png)</a>
+<a href="https://android-sdk.qfapi.com/images/parse__query__card__details2.png" target="_blank"> ![Query Card Transaction Details](/images/parse__query__card__details2.png)</a>
+
+
+## Card Adjust
+
+Calling an adjust request:
+
+<a href="https://android-sdk.qfapi.com/images/card__adjust.png" target="_blank"> ![Card Adjust](/images/card__adjust.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__card__adjust.png" target="_blank"> ![Card Adjust](/images/parse__card__adjust.png)</a>
+
+
+## Card Settle
+
+Calling a settle request:
+
+<a href="https://android-sdk.qfapi.com/images/card__settle.png" target="_blank"> ![Card Settle](/images/card__settle.png)</a>
+
+Parse the return value:
+
+<a href="https://android-sdk.qfapi.com/images/parse__card__settle.png" target="_blank"> ![Card Settle](/images/parse__card__settle.png)</a>
+
+
+
+# Appendix
+
+## Transaction Information Field Description
+
+| Field Name | Type              | M/O | Description                     | 
+| ---------- | ------------------------- |-----|---------------------------------|
+| id | String  |   M   | Transaction idendity number |
+| amt | Long | M | Transaction Amount |
+| time | String | M | Transaction time yyy-MM-dd HH:mm:ss |
+| channel | String | M | Transaction channel like weixin, alipay |
+| status | Integer | M | Transaction status |
+| type | String | M | Transaction type, payment or refund |
+| originId | String | O | Original transaction id, mandatory if the transaction is refund |
+| mchntName | String | M | Sore name |
+| remarks | String | O | Transaction remarks |
+| confirmCode | String | O | Transaction confirmation code |
+| operatorAccount | String | M | Operator name |
+| appCode | String | O | Application code (swipe card) |
+| customerId | String | O | Idendity of customer wallet (pre-authorization) |
+| customerAccount | String | O | Account of customer wallet (pre-authorization)|
+| completeTransId | String | O | Newly generated transaction id when the pre-authorization transaction is completed (pre-authorization) |
+| completeTime | String | O | Complete time when the pre-authorization transaction is completed yyyy-MM-dd HH:mm:ss (pre-authorization) |
+
+
+## Channel Information Field Description
+
+| Field Name | Type              | M/O | Description                     | 
+| ---------- | ------------------------- |-----|---------------------------------|
+| name | String | M | Channel name |
+| desc | String | M | Channel description |
+
+
+## Transaction Status Field Description
+
+| Transaction Status | Description       |
+| ------------------ | ------------------|
+| 0 | Normal transaction |
+| -1/-2 | Waiting for payment |
+| -3 | Failed |
+| 1 | Reversal |
+| 2 | Void |
+| 3 | Refund |
+| 4 | Partial Refund |
+| 5 | Pre-authorization Frozen |
+| 6 | Pre-authorization Unfrozen |
+| 7 | Pre-authorization Completed |
+
+## Result Code Description
+
+| Result Code        | Description       |
+| ------------------ | ------------------|
+| -1 | Unknown error |
+| 0 | Success |
+| 100 | Client error |
+| 101 | Amount error |
+| 102 | AppId is empty |
+| 103 | Order id is empty |
+| 104 | Other parameter is empty |
+| 105 | User cancel |
+| 106 | Network error |
+| 107 | User not logged in |
+| 108 | Application not installed |
+| 109 | Launch App failed |
+| 110 | Non-support API invoke |
+| 111 | Time period error |
+| 112 | Cross-month query not allowed |
+| 113 | Failed to get config info |
+| 114 | Card adjust failed |
+| 115 | Device does not support card swiping |
+| 116 | Password input error |
+| 200 | Server error |
+| 201 | Order id does not exist |
+| 202 | Transaction Failed |
+| 203 | Insufficient account balance |
+| 204 | Transaction is confirming |
+| 205 | Login status expired |
+| 206 | Refund is confirming |
+| 207 | Refund Failed |
+
+
+
